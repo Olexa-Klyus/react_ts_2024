@@ -3,9 +3,9 @@ import './App.css';
 
 const App: FC = () => {
     return (
-        <>
+        <div>
 
-        </>
+        </div>
     );
 }
 
