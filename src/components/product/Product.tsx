@@ -14,10 +14,24 @@ interface IProductProps {
     "images": string[]
 }
 
-const Product: FC<IProductProps> = () => {
+type ITypeProductProps = IProductProps & {}
+const Product: FC<ITypeProductProps> = ({
+                                        id, title,
+                                        description,
+                                        price,
+                                        discountPercentage,
+                                        rating,
+                                        stock,
+                                        brand,
+                                        category,
+                                        thumbnail,
+                                        images
+                                    }) => {
     return (
         <div>
-            <h2>{}</h2>
+            <h2>{id} {title}</h2>
+            <p>{description}</p>
+
         </div>
     );
 };
