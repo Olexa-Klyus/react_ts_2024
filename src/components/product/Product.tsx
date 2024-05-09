@@ -1,4 +1,6 @@
 import React, {FC} from 'react';
+import './Product.css'
+
 
 export interface IProductProps {
     "id": number,
@@ -33,6 +35,9 @@ const Product: FC<ITypeProductProps> = ({
             <h2>{id} {title}</h2>
             <p>{description}</p>
             <h3>ціна - {price} грн.</h3>
+            <div className={"productimage"}>
+                dfgfdgfdgfg
+            </div>
         </div>
     );
 };
