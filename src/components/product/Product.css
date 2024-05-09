@@ -1,3 +1,14 @@
+body {margin-left: 50px}
+
 .Product-image-wrap {
-    background-color: magenta;
+
+    background-color: burlywood;
+}
+
+.Product-image-div {
+
+}
+
+.Product-img{
+    height: 100px;
 }
