@@ -2,7 +2,7 @@ import React from 'react';
 
 const Producrs = () => {
 
-    // https://dummyapi.online/api/products
+    //https://dummyjson.com/products
 
     return (
         <div>
