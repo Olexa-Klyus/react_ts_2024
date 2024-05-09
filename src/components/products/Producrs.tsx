@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Product from "../product/Product";
+import Product, {IProductProps} from "../product/Product";
 import product from "../product/Product";
 
 const Producrs = () => {
@@ -17,9 +17,22 @@ const Producrs = () => {
     }, []);
     return (
         <div>
-            <Product key={products.id}
-                     id={} title={} description={} price={} discountPercentage={} rating={} stock={} brand={}
-                     category={} thumbnail={} images={}/>
+
+
+            {products.map((value: IProductProps) =>
+                <Product key={value.id}
+                         id={value.id}
+                         title={value.title}
+                         description={value.description}
+                         price={value.price}
+                         discountPercentage={value.discountPercentage}
+                         rating={value.rating}
+                         stock={value.stock}
+                         brand={value.brand}
+                         category={value.category}
+                         thumbnail={value.thumbnail}
+                         images={value.images}/>)
+            }
         </div>
     );
 };

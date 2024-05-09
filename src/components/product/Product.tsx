@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 
-interface IProductProps {
+export interface IProductProps {
     "id": number,
     "title": string,
     "description": string,
@@ -14,7 +14,7 @@ interface IProductProps {
     "images": string[]
 }
 
-type ITypeProductProps = IProductProps & { children?: React.ReactNode }
+export type ITypeProductProps = IProductProps & { children?: React.ReactNode }
 const Product: FC<ITypeProductProps> = ({
                                             id,
                                             title,
