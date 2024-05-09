@@ -14,24 +14,25 @@ interface IProductProps {
     "images": string[]
 }
 
-type ITypeProductProps = IProductProps & {}
+type ITypeProductProps = IProductProps & { children?: React.ReactNode }
 const Product: FC<ITypeProductProps> = ({
-                                        id, title,
-                                        description,
-                                        price,
-                                        discountPercentage,
-                                        rating,
-                                        stock,
-                                        brand,
-                                        category,
-                                        thumbnail,
-                                        images
-                                    }) => {
+                                            id,
+                                            title,
+                                            description,
+                                            price,
+                                            discountPercentage,
+                                            rating,
+                                            stock,
+                                            brand,
+                                            category,
+                                            thumbnail,
+                                            images
+                                        }) => {
     return (
         <div>
             <h2>{id} {title}</h2>
             <p>{description}</p>
-
+            <h3>ціна - {price} грн.</h3>
         </div>
     );
 };

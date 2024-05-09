@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const Producrs = () => {
 
+
+    const [products, setProducts] = useState()
     //https://dummyjson.com/products
 
     return (
