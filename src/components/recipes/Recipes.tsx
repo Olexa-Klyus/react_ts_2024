@@ -1,7 +1,5 @@
 import React, {FC, useEffect, useState} from 'react';
-import Recipe, {IRecipeProps, IRecipeTypeProps} from "../recipe/Recipe";
-import recipe from "../recipe/Recipe";
-import {isMainThread} from "node:worker_threads";
+import Recipe, {IRecipeProps} from "../recipe/Recipe";
 
 const Recipes: FC = () => {
 
