@@ -35,8 +35,12 @@ const Product: FC<ITypeProductProps> = ({
             <h2>{id} {title}</h2>
             <p>{description}</p>
             <h3>ціна - {price} грн.</h3>
-            <div className={"productimage"}>
-                dfgfdgfdgfg
+            <div className={"Product-image-wrap"}>
+                {images?.map(
+                    <div className={"Product-image"}>
+                        <img src={image}/>
+                    </div>
+                )}
             </div>
         </div>
     );
