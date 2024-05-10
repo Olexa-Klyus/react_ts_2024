@@ -1,4 +1,5 @@
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
+import {IRecipeProps} from "../models/Recipe";
 
 
 let axiosInstance = axios.create({

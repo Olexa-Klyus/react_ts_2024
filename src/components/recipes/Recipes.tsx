@@ -12,7 +12,7 @@ const Recipes: FC = () => {
     useEffect(() => {
         getAllRecipes()
             .then(value => setRecipes(value.data.recipes));
-
+        //
     }, []);
 
 
