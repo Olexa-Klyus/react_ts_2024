@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import Product, {IProductProps} from "../product/Product";
-import product from "../product/Product";
+import {IProductProps} from "../../types";
+import {Product} from "../Product/Product";
 
-const Producrs = () => {
+const Products = () => {
 
 
     const [products, setProducts] = useState([])
@@ -36,4 +36,4 @@ const Producrs = () => {
     );
 };
 
-export default Producrs;
+export default Products;

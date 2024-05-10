@@ -1,23 +1,9 @@
 import React, {FC} from 'react';
 import classes from './Product.module.css'
+import {ITypeProductProps} from "../../types";
 
 
-export interface IProductProps {
-    "id": number,
-    "title": string,
-    "description": string,
-    "price": number,
-    "discountPercentage": number,
-    "rating": number,
-    "stock": number,
-    "brand": string,
-    "category": string,
-    "thumbnail": string,
-    "images": string[]
-}
-
-export type ITypeProductProps = IProductProps & { children?: React.ReactNode }
-const Product: FC<ITypeProductProps> = ({
+export const Product: FC<ITypeProductProps> = ({
                                             id,
                                             title,
                                             description,
@@ -55,4 +41,3 @@ const Product: FC<ITypeProductProps> = ({
     );
 };
 
-export default Product;

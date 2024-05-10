@@ -1,13 +1,16 @@
 import React, {FC} from 'react';
 import './App.css';
-import Producrs from "./components/products/Producrs";
-import {Counter} from "./components/counter/Counter";
+import Products from "./components/Products/Products";
+import {Posts} from "./components/Posts/Posts";
+
 
 const App: FC = () => {
     return (
         <div>
-            {/*<Producrs/>*/}
-            {<Counter/>}
+            {/*<Products/>*/}
+            {/*{<Counter/>}*/}
+            <Posts/>
+
         </div>
     );
 }
