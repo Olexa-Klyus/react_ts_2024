@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import './Product.css'
+import classes from './Product.module.css'
 
 
 export interface IProductProps {
@@ -38,16 +38,16 @@ const Product: FC<ITypeProductProps> = ({
             <h4>Розмір знижки - {discountPercentage}</h4>
             <h4>Рейтинг - {rating}</h4>
             <h4>Кількість - {stock}</h4>
-            <h4>Бренд  - {brand}</h4>
+            <h4>Бренд - {brand}</h4>
             <h4>Категорія - {category}</h4>
 
             <img src={thumbnail} alt={title}/>
 
-            <div className={"Product-image-wrap"}>
+            <div className={classes.ProductImageWrap}>
                 {
                     images?.map(image =>
-                        <div className={"Product-image-div"}>
-                            <img className={'Product-img'} src={image} alt={title}/>
+                        <div className={classes.ProductImageDiv}>
+                            <img className={classes.ProductImg} src={image} alt={title}/>
                         </div>
                     )}
             </div>
