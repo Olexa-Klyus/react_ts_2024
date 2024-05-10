@@ -1,5 +1,5 @@
 import axios from "axios";
-import recipe from "../components/recipe/Recipe";
+
 
 let axiosInstance = axios.create({
     baseURL: 'https://dummyjson.com/',
