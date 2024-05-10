@@ -18,7 +18,6 @@ const Producrs = () => {
     return (
         <div>
 
-
             {products.map((value: IProductProps) =>
                 <Product key={value.id}
                          id={value.id}
