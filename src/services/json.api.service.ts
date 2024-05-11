@@ -1,24 +1,21 @@
 import axios, {AxiosResponse} from "axios";
-import {PostModel} from "../models/PostModel";
+import {IPostModel} from "../models/IPostModel";
+import {ICommentModel} from "../models/ICommentModel";
 
 let axiosInstance = axios.create({
     baseURL: 'https://jsonplaceholder.typicode.com',
     headers: {'content-type': 'application/json; charset=UTF-8'}
 });
 
-// let requests = {
-//     posts: {
-//         getAllPosts: () => {
-//             return axiosInstance.get('/posts');
-//         }
-//     }
-// }
-// export {requests}
-
-
-const getAllPosts = ():Promise<AxiosResponse<PostModel[]>> => {
+const getAllPosts = (): Promise<AxiosResponse<IPostModel[]>> => {
     return axiosInstance.get('/posts');
 }
 
+const getAllCommentsOfPost = (id: number): Promise<AxiosResponse<ICommentModel[]>> => {
+    return axiosInstance.get('/comments/?postId=' + id)
 
-export {getAllPosts}
+}
+export {
+    getAllPosts,
+    getAllCommentsOfPost
+}

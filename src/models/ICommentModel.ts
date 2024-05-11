@@ -1,4 +1,4 @@
-export interface CommentModel {
+export interface ICommentModel {
     postId: number,
     id: 1,
     name: string,

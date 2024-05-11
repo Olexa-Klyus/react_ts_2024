@@ -1,17 +1,14 @@
 import React, {FC, useEffect, useState} from 'react';
-import {PostModel} from "../../models/PostModel";
+import {IPostModel} from "../../models/IPostModel";
 import Post from "../post/Post";
 import {getAllPosts} from "../../services/json.api.service";
 
-// interface IPostsProps {
-//     posts: PostModel[]
-// }
-//
-// type IPostsPropsType = IPostsProps & { children?: React.ReactNode }
 
-const Posts = () => {
+type IPostsPropsType =  {lift?: (postId: number) => void};
 
-    const [posts, setPosts] = useState<PostModel[]>([])
+const Posts: FC<IPostsPropsType> = ({lift}) => {
+
+    const [posts, setPosts] = useState<IPostModel[]>([])
 
     useEffect(() => {
         getAllPosts().then(({data}) => setPosts(data))
@@ -19,7 +16,7 @@ const Posts = () => {
 
     return (
         <div>
-            {posts.map((post) => (<Post key={post.id} post={post}/>))}
+            {posts.map((post) => (<Post key={post.id} post={post} lift={lift}/>))}
         </div>
     );
 };
