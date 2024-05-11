@@ -1,9 +1,16 @@
-import React from 'react';
+import React, {FC} from 'react';
+import {ICommentModel} from "../../models/ICommentModel";
 
-const Comments = () => {
+interface ICommentsProps {
+    comments: ICommentModel[]
+}
+
+const Comments: FC<ICommentsProps> = ({comments}) => {
     return (
         <div>
-            comments
+            {
+                comments.map((comment: ICommentModel) => (<li>{comment.body}</li>))
+            }
         </div>
     );
 };
