@@ -11,5 +11,8 @@ let axiosInstance = axios.create({
 const getAllCarts = ():Promise<AxiosResponse<CartsResponseModel>> => {
     return axiosInstance.get('/carts')
 }
+const getSingleCart = ():Promise<AxiosResponse<CartsResponseModel>> => {
+    return axiosInstance.get('/carts/'+ id)
+}
 
 export {getAllCarts}
