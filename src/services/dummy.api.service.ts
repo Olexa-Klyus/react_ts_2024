@@ -1,6 +1,4 @@
 import axios, {AxiosResponse} from "axios";
-import Carts from "../components/Carts/Carts";
-import {CartModel} from "../models/CartModel";
 import {CartsResponseModel} from "../models/CartsResponseModel";
 
 let axiosInstance = axios.create({
@@ -8,11 +6,8 @@ let axiosInstance = axios.create({
     headers: {}
 });
 
-const getAllCarts = ():Promise<AxiosResponse<CartsResponseModel>> => {
+const getAllCarts = (): Promise<AxiosResponse<CartsResponseModel>> => {
     return axiosInstance.get('/carts')
-}
-const getSingleCart = ():Promise<AxiosResponse<CartsResponseModel>> => {
-    return axiosInstance.get('/carts/'+ id)
 }
 
 export {getAllCarts}
