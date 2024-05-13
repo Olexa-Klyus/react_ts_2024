@@ -2,6 +2,8 @@ import React, {memo, useState} from 'react';
 import './App.css';
 
 // щоб не перерендерювати постійно статичний компонент, потрібно його тіло огорнути в хук memo
+// він перевіряє, якщо всередині memo змін нема, то перерендеру не буде
+
 const A = memo(() => {
     console.log('A render');
     return <div>hello</div>
