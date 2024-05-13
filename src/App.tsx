@@ -2,7 +2,8 @@ import React, {FC, memo, useCallback, useMemo, useState} from 'react';
 import './App.css';
 
 // мемомізує обєкти
-// і в deps вказати тригер, наприклад counter
+// якщо функція багато разів рендериться без змін , то доцільно її замемити
+
 
 const A: FC<any> = memo(({foobar}) => {
     console.log('A render');
