@@ -1,5 +1,6 @@
 import React, {useReducer, useState} from 'react';
 import './App.css';
+import any = jasmine.any;
 
 
 interface IState {
@@ -14,7 +15,7 @@ function reduser(state: IState, action: { type: string, payload: number }): null
 
 const App = () => {
 
-    const [state, dispatch] = useReducer(reduser, {value: 0})
+    const [state, dispatch] = useReducer<IState,any>(reduser, {value: 0})
 
     const increment = () => {
 
