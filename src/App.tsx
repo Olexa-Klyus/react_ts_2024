@@ -1,4 +1,4 @@
-import React, {FC, memo, useCallback, useState} from 'react';
+import React, {FC, memo, useCallback, useMemo, useState} from 'react';
 import './App.css';
 
 // мемомізує обєкти
@@ -18,11 +18,15 @@ const App = () => {
 
     const foobar = useCallback(() => {
         //.... складна логіка
-    }, [counter]);
+    }, []);
+
+    const arr = useMemo(() => {
+        return [];
+    }, []);
 
     return (
         <div>
-            <A foobar={foobar}/>
+            <A foobar={foobar} arr={arr}/>
             <button onClick={() => {
                 setCounter(counter + 1);
             }}>click
