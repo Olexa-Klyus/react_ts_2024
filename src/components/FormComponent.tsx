@@ -8,17 +8,21 @@ interface IFormProps {
 }
 
 const FormComponent: FC = () => {
-    let form = useForm<IFormProps>();
-    console.log(form);
-
+    let formObj = useForm<IFormProps>();
+    let {register, handleSubmit} = formObj
+    console.log(formObj);
+    const
+        save = (formValues: IFormProps) => {
+            console.log(formValues) // отримуємо значення з інпутів
+        }
 
     return (
         <div>
-            <form>
-                console.log('hkhkj');
-                <input type='text' name={'username'}/>
-                <input type='number' name={'age'}/>
-                <input type='text' name={'password'}/>
+            <form onSubmit={handleSubmit(save)}>
+
+                <input type='text' {...register('username')}/>
+                <input type='number' {...register('age')}/>
+                <input type='text' {...register('password')}/>
                 <button>save</button>
             </form>
         </div>
