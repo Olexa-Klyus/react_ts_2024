@@ -15,6 +15,7 @@ const FormComponent: FC = () => {
     return (
         <div>
             <form>
+                console.log('hkhkj');
                 <input type='text' name={'username'}/>
                 <input type='number' name={'age'}/>
                 <input type='text' name={'password'}/>
