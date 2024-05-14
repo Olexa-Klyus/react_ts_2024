@@ -1,5 +1,7 @@
 import React, {FC} from 'react';
 import {useForm} from "react-hook-form";
+import {joiResolver} from "@hookform/resolvers/joi";
+import {userValidator} from "../validators/user.validator";
 
 interface IFormProps {
     username: string,
@@ -8,12 +10,14 @@ interface IFormProps {
 }
 
 const FormComponent: FC = () => {
-    let formObj = useForm<IFormProps>();
+
+    let formObj =
+        useForm<IFormProps>({mode: "all", resolver: joiResolver(userValidator)});
 
     let {
         register,
         handleSubmit,
-        formState: {errors}
+        formState: {errors, isValid}
     } = formObj
 
 
@@ -26,20 +30,17 @@ const FormComponent: FC = () => {
         <div>
             <form onSubmit={handleSubmit(save)}>
 
-                <input type='text'
-                    // реєстрація та варіант валідації
-                       {...register('username',
-                           {
-                               required: {value: true, message: 'this field is required'},
-                               maxLength: {value: 10, message: 'max length 10'},
-                           })}
-                />
-
-                {errors.username && <span>{errors.username.message}</span>}
+                <input type='text'{...register('username')}/>
+                {
+                    errors.username && <span>{errors.username.message}</span>
+                }
                 <br/>
                 <input type='text' {...register('password')}/>
                 <br/>
                 <input type='number' {...register('age')}/>
+                {
+                    errors.age && <span>{errors.age.message}</span>
+                }
                 <br/>
 
                 <button>save</button>
