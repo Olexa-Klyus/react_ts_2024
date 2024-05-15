@@ -5,7 +5,7 @@ import {IPostModel} from "../models/IPostModel";
 
 const axiosInstance = axios.create({
     baseURL: 'https://jsonplaceholder.typicode.com',
-    headers: {}
+    headers: {'Content-type': 'application/json; charset=UTF-8',}
 });
 
 const postService = {
@@ -13,14 +13,14 @@ const postService = {
         return axiosInstance.get('/posts')
     },
 
-    savePost: ({title, body, userId}: IFormModel):Promise<AxiosResponse<IPostModel>> => {
+    savePost: ({title, body, userId}: IFormModel): Promise<AxiosResponse<IPostModel>> => {
 
         return axiosInstance.post(
             `/posts`,
-            {body, title, userId},
-            {headers: {'Content-type': 'application/json; charset=UTF-8',}}
+            {body, title, userId}
         )
     }
 }
+
 
 export {postService}
