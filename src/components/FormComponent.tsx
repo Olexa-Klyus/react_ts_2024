@@ -1,18 +1,17 @@
 import React, {FC} from 'react';
 import {useForm} from "react-hook-form";
 import {joiResolver} from "@hookform/resolvers/joi";
-import {userValidator} from "../validators/user.validator";
+import {postValidator} from "../validators/post.validator";
 
 interface IFormProps {
-    username: string,
-    age: number,
-    password: string,
+    title: string,
+    body: string,
 }
 
 const FormComponent: FC = () => {
 
     let formObj =
-        useForm<IFormProps>({mode: "all", resolver: joiResolver(userValidator)});
+        useForm<IFormProps>({mode: "all", resolver: joiResolver(postValidator)});
 
     let {
         register,
@@ -30,17 +29,12 @@ const FormComponent: FC = () => {
         <div>
             <form onSubmit={handleSubmit(save)}>
 
-                <input type='text'{...register('username')}/>
-                {
-                    errors.username && <span>{errors.username.message}</span>
-                }
+                <input type='text'{...register('title')}/>
+                {errors.title && <span>{errors.title.message}</span>}
                 <br/>
-                <input type='text' {...register('password')}/>
-                <br/>
-                <input type='number' {...register('age')}/>
-                {
-                    errors.age && <span>{errors.age.message}</span>
-                }
+
+                <input type='text' {...register('body')}/>
+                {errors.body && <span>{errors.body.message}</span>}
                 <br/>
 
                 <button>save</button>
