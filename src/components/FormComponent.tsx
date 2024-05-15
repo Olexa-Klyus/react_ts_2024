@@ -3,17 +3,14 @@ import {useForm} from "react-hook-form";
 import {joiResolver} from "@hookform/resolvers/joi";
 import {postValidator} from "../validators/post.validator";
 import {IPostModel} from "../models/IPostModel";
+import {IFormModel} from "../models/IFormModel";
+import {postService} from "../services/api.service";
 
-interface IFormProps {
-    title: string,
-    body: string,
-    userId: number,
-}
 
 const FormComponent: FC = () => {
 
     let formObj =
-        useForm<IFormProps>({mode: "all", resolver: joiResolver(postValidator)});
+        useForm<IFormModel>({mode: "all", resolver: joiResolver(postValidator)});
 
     let {
         register,
@@ -24,22 +21,10 @@ const FormComponent: FC = () => {
     const [post, setPost] = useState<IPostModel | null>(null);
 
     const
-        save = (formValues: IFormProps) => {
+        save = (post: IFormModel) => {
 
-
-            fetch('https://jsonplaceholder.typicode.com/posts', {
-                method: 'POST',
-                body: JSON.stringify({
-                    title: formValues.title,
-                    body: formValues.body,
-                    userId: formValues.userId,
-                }),
-                headers: {
-                    'Content-type': 'application/json; charset=UTF-8',
-                },
-            })
-                .then((response) => response.json())
-                .then((json) => setPost(json));
+            postService.savePost(post)
+                .then((value) => setPost(value.data))
         }
 
     return (
