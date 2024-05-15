@@ -1,7 +1,8 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import {useForm} from "react-hook-form";
 import {joiResolver} from "@hookform/resolvers/joi";
 import {postValidator} from "../validators/post.validator";
+import {IPostModel} from "../models/IPostModel";
 
 interface IFormProps {
     title: string,
@@ -20,6 +21,7 @@ const FormComponent: FC = () => {
         formState: {errors, isValid}
     } = formObj
 
+    const [post, setPost] = useState<IPostModel | null>(null);
 
     const
         save = (formValues: IFormProps) => {
@@ -37,7 +39,7 @@ const FormComponent: FC = () => {
                 },
             })
                 .then((response) => response.json())
-                .then((json) => console.log(json));
+                .then((json) => setPost(json));
         }
 
     return (
@@ -56,9 +58,10 @@ const FormComponent: FC = () => {
                 {errors.userId && <span>{errors.userId.message}</span>}
                 <br/>
 
-
                 <button>save</button>
             </form>
+
+            {post && <h2>saved post {post.id} - {post.title}</h2>}
         </div>
     );
 };
