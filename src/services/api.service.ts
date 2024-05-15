@@ -8,10 +8,12 @@ const axiosInstance = axios.create({
     headers: {'Content-type': 'application/json; charset=UTF-8',}
 });
 
-axiosInstance.interceptors.request.use((myrequest => {
 
-    console.log(myrequest)
-    return myrequest
+//можна перехорити і додати щось до запиту, наприклад хедер,або токен
+axiosInstance.interceptors.request.use((request => {
+
+    console.log(request)
+    return request
 
 }))
 
