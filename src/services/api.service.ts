@@ -8,6 +8,13 @@ const axiosInstance = axios.create({
     headers: {'Content-type': 'application/json; charset=UTF-8',}
 });
 
+axiosInstance.interceptors.request.use((myrequest => {
+
+    console.log(myrequest)
+    return myrequest
+
+}))
+
 const postService = {
     getAllPosts: () => {
         return axiosInstance.get('/posts')
