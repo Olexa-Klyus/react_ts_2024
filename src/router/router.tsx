@@ -5,6 +5,6 @@ import AnotherLayout from "../layout/AnotherLayout";
 
 export const routerConfig = createBrowserRouter([
         {path: '/', element: <MainLayout/>},
-        {path: '/contacts', element: <AnotherLayout/>}
+        {path: '/another', element: <AnotherLayout/>}
     ]
 );
