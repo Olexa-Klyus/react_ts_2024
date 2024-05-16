@@ -1,9 +1,16 @@
-import React from 'react';
+import React, {FC, useEffect, useState} from 'react';
+import {userApiService} from "../services/api.service";
+import {IUserModel} from "../models/IUserModel";
 
-const UsersComponent = () => {
+const UsersComponent: FC = () => {
+
+    const [users, setUsers] = useState<IUserModel[]>([])
+    useEffect(() => {
+        userApiService.getAllUsers().then(value => setUsers(value.data))
+    }, []);
     return (
         <div>
-            UsersComponent
+            {users.map(user => <div key={user.id}> {user.name}</div>)}
         </div>
     );
 };
