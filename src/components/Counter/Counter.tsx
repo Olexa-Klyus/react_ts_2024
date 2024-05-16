@@ -9,7 +9,6 @@ export const Counter = () => {
     useEffect(() => {
         console.log('count has been changed')
     }, [count]);
-
     const handleInc = () => setCount(count + 1)
     const handleDec = () => setCount(count - 1)
 
