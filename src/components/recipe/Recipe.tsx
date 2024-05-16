@@ -1,7 +1,6 @@
 import React, {FC} from 'react';
 
 export interface IRecipeProps {
-
     id?: number,
     name?: string,
     ingredients?: string[],
