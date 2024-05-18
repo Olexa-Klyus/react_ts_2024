@@ -8,6 +8,6 @@ const urls = {
 }
 
 export {
+    baseURL,
     urls,
-    baseURL
 }
