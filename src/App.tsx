@@ -15,7 +15,7 @@ function reduser(state: IState, action: { type: string, payload: number }): null
 
 const App = () => {
 
-    const [state, dispatch] = useReducer<IState,any>(reduser, {value: 0})
+    const [state, dispatch] = useReducer<IState, any>(reduser, {value: 0})
 
     const increment = () => {
 
