@@ -15,11 +15,10 @@ const userApiService = {
     getUserByUserId: async (userId: number): Promise<AxiosResponse<IUserModel>> => {
         return await axiosInstance.get(`/users/${userId}`);
     },
-    getPostsOfUser:(userId: string): Promise<AxiosResponse<IPostModel[]>> => {
+
+    getPostsOfUser: (userId: string): Promise<AxiosResponse<IPostModel[]>> => {
         return axiosInstance.get(`/users/${userId}/posts`);
     },
-
-
 }
 
 export {userApiService}
