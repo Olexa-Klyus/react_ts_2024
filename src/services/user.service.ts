@@ -6,7 +6,7 @@ import {urls} from "../constants/urls";
 const userApiService = {
     getAllUsers: (): IResponce<IUserModel[]> => {
         return (
-            apiService.get(urls.users)
+            // apiService.get(urls.users)
         console.log(urls.users)
     )
     }
