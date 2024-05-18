@@ -3,7 +3,7 @@ import {CartModel} from "../../models/CartModel";
 import {ProductModel} from "../../models/ProductModel";
 import products from "../Products/Products";
 
-type IProps = { item: CartModel, getProductsFromCart: (products:ProductModel[]) => void }
+type IProps = { item: CartModel, getProductsFromCart: (products: ProductModel[]) => void }
 
 const Cart: FC<IProps> = ({item, getProductsFromCart}) => {
 
