@@ -2,8 +2,6 @@ import React, {FC} from 'react';
 import {IRecipeProps} from "../../models/Recipe";
 
 
-
-
 export type IRecipeTypeProps = IRecipeProps & { children?: React.ReactNode };
 const Recipe: FC<IRecipeTypeProps> = ({
                                           id,
