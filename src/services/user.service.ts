@@ -4,7 +4,12 @@ import {IResponce} from "../types/responceType";
 import {urls} from "../constants/urls";
 
 const userApiService = {
-    getAllUsers: (): IResponce<IUserModel[]> => apiService.get(urls.users)
+    getAllUsers: (): IResponce<IUserModel[]> => {
+        return (
+            apiService.get(urls.users)
+        console.log(urls.users)
+    )
+    }
 }
 
 export {
