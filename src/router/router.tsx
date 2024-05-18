@@ -1,6 +1,6 @@
 import {createBrowserRouter} from "react-router-dom";
-import MainLayout from "../layout/MainLayout";
-import AnotherLayout from "../layout/AnotherLayout";
+import MainLayout from "../layouts/MainLayout";
+import AnotherLayout from "../layouts/AnotherLayout";
 import HomePage from "../pages/HomePage";
 import UsersComponent from "../components/UsersComponent";
 
