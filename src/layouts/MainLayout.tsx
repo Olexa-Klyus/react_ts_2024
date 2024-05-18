@@ -1,14 +1,14 @@
 import React, {FC} from 'react';
 import {Outlet} from "react-router-dom";
-import HeaderComponent from "../components/HeaderComponent";
-import FooterComponent from "../components/FooterComponent";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const MainLayout: FC = () => {
     return (
         <div>
-            <HeaderComponent/>
+            <Header/>
             <Outlet/>
-            <FooterComponent/>
+            <Footer/>
         </div>
     );
 };

@@ -1,9 +1,12 @@
-import {AxiosResponse} from "axios";
 import {IUserModel} from "../models/IUserModel";
 import {apiService} from "./api.service";
+import {IResponce} from "../types/responceType";
+import {urls} from "../constants/urls";
 
 const userApiService = {
-    getAllUsers: (): Promise<AxiosResponse<IUserModel[]>> => {
-        return apiService.get("/users");
-    }
+    getAllUsers: (): IResponce<IUserModel[]> => apiService.get(urls.users)
+}
+
+export {
+    userApiService
 }

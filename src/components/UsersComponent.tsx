@@ -1,6 +1,7 @@
 import React, {FC, useEffect, useState} from 'react';
-import {userApiService} from "../services/api.service";
+
 import {IUserModel} from "../models/IUserModel";
+import {userApiService} from "../services/user.service";
 
 const UsersComponent: FC = () => {
 

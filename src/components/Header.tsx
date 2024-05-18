@@ -1,17 +1,17 @@
 import React from 'react';
 import {Link, NavLink} from "react-router-dom";
 
-const HeaderComponent = () => {
+const Header = () => {
     return (
         <div>
             Header
             <br/>
-            <NavLink to={'/'}>Home Page</NavLink>
+            <NavLink to={'/'}>Users Page</NavLink>
             <br/>
-            <NavLink to={'users'}>Users Page</NavLink>
+            <NavLink to={'posts'}>Posts Page</NavLink>
             <hr/>
         </div>
     );
 };
 
-export default HeaderComponent;
+export default Header;
