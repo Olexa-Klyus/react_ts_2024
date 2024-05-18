@@ -1,14 +1,12 @@
 import {IUserModel} from "../models/IUserModel";
-import axios, {AxiosResponse} from "axios";
+import {axiosInstance} from "./api.service";
+import {IResponceType} from "../types/responceType";
+import {urls} from "../constants/urls";
 
-let axiosInstance = axios.create({
-    baseURL: 'https://jsonplaceholder.typicode.com',
-    headers: {}
-});
 
 const userApiService = {
-    getAllUsers: (): Promise<AxiosResponse<IUserModel[]>> => {
-        return axiosInstance.get("/users");
+    getAllUsers: (): IResponceType<IUserModel[]> => {
+        return (axiosInstance.get(urls.users))
     },
     //
     // getUserByUserId: async (userId: number): Promise<AxiosResponse<IUserModel>> => {
