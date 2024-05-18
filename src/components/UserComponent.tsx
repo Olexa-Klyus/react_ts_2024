@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {IUserModel} from "../models/IUserModel";
-import {NavLink} from "react-router-dom";
+import {NavLink, useLocation} from "react-router-dom";
 
 interface IProps {
     user: IUserModel;
@@ -10,7 +10,9 @@ const UserComponent: FC<IProps> = ({user}) => {
     return (
         <div>
             <div>
-                <NavLink to={user.id.toString()}> {user.name}</NavLink>
+                // в state можна передати обєкт
+                // а в дочірньому відхопити за допомогою  useLocation();
+                <NavLink to={user.id.toString()} state={{user}}> {user.name}</NavLink>
             </div>
         </div>
     );

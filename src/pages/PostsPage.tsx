@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import PostsComponent from "../components/PostsComponent";
-import {useParams} from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
 import {IPostModel} from "../models/IPostModel";
 import {userApiService} from "../services/api.service";
 
@@ -8,6 +8,9 @@ import {userApiService} from "../services/api.service";
 const PostsPage = () => {
 
     const {id} = useParams();
+    const location = useLocation();
+    console.log(location);
+
     const [posts, setPosts] = useState<IPostModel[]>([])
 
     useEffect(() => {
