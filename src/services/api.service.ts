@@ -1,6 +1,15 @@
 import axios from "axios";
 import {baseURL} from "../constants/urls";
 
-const apiService = axios.create("https://jsonplaceholder.typicode.com");
+let axiosInstance = axios.create({
+    baseURL: 'https://jsonplaceholder.typicode.com/',
+    headers: {}
+});
 
-export {apiService}
+const apiService = axios.create({baseURL: 'https://jsonplaceholder.typicode.com/'});
+console.log(apiService)
+
+export {
+    apiService,
+    axiosInstance
+}
