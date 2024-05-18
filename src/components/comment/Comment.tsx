@@ -4,10 +4,13 @@ import {ICommentModel} from "../../models/ICommentModel";
 interface ICommentProps {
     comment: ICommentModel;
 }
-const Comment : FC<ICommentProps> = ({comment}) => {
+
+const Comment: FC<ICommentProps> = ({comment}) => {
     return (
         <div>
-            (<li>{comment.id} {comment.body}</li>))
+            (
+            <li>{comment.id} {comment.body}</li>
+            ))
         </div>
     );
 };
