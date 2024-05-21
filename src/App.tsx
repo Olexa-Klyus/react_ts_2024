@@ -11,7 +11,6 @@ interface CounterAction {
     payload: number;
 }
 
-
 const callbackReducer = (state: CounterState, action: CounterAction): CounterState => {
 
     switch (action.type) {
@@ -19,7 +18,7 @@ const callbackReducer = (state: CounterState, action: CounterAction): CounterSta
             state.count += action.payload;
             return {...state}
         case 'dec':
-            state.count += action.payload;
+            state.count -= action.payload;
             return {...state}
         case 'reset':
             state.count = action.payload;
@@ -28,7 +27,6 @@ const callbackReducer = (state: CounterState, action: CounterAction): CounterSta
 
     return {count: -5000000};
 };
-
 
 const App = () => {
 
@@ -43,7 +41,7 @@ const App = () => {
             </button>
 
             <button onClick={() =>
-                dispatch({type: 'dec', payload: -1})
+                dispatch({type: 'dec', payload: 1})
             }>decrement
             </button>
 
