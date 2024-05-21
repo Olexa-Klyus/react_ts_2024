@@ -1,40 +1,57 @@
-import React, {useReducer, useState} from 'react';
+import React, {useReducer} from 'react';
 import './App.css';
-import any = jasmine.any;
 
 
-interface IState {
-    value: number;
+interface CounterState {
+    count: number
+}
+
+interface CounterAction {
+    type: string,
+    payload: number;
 }
 
 
-function reduser(state: IState, action: { type: string, payload: number }): null {
-    return null;
+const callbackReducer = (state: CounterState, action: CounterAction): CounterState => {
+
+    switch (action.type) {
+        case 'inc':
+            state.count += action.payload;
+            return {...state}
+        case 'dec':
+            state.count += action.payload;
+            return {...state}
+        case 'reset':
+            state.count = action.payload;
+            return {...state}
+    }
+
+    return {count: -5000000};
 };
 
 
 const App = () => {
 
-    const [state, dispatch] = useReducer<IState, any>(reduser, {value: 0})
-
-    const increment = () => {
-
-    };
-
-    const decrement = () => {
-
-    };
-
-    const reset = () => {
-        setCounter({value: 0});
-    };
+    const [state, dispatch] = useReducer(callbackReducer, {count: 0})
 
     return (
         <div>
-            <h2>{counter.value}</h2>
-            <button onClick={increment}>increment</button>
-            <button onClick={decrement}>decrement</button>
-            <button onClick={reset}>reset</button>
+            <h2>{state.count}</h2>
+            <button onClick={() =>
+                dispatch({type: 'inc', payload: 1})
+            }>increment
+            </button>
+
+            <button onClick={() =>
+                dispatch({type: 'dec', payload: -1})
+            }>decrement
+            </button>
+
+            <button onClick={() =>
+                dispatch({type: 'reset', payload: 0})
+            }>reset
+            </button>
+
         </div>
     );
 }
