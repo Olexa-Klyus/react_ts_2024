@@ -1,10 +1,10 @@
 import {apiService} from "./apiService";
 import {urls} from "../constants";
 
-const caracterService = {
+const characterService = {
     getAll: (page: any) => (apiService.get(urls.characters, {params: {page}}))
 }
 
 export {
-    caracterService
+    characterService
 }

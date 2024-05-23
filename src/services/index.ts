@@ -1,2 +1,2 @@
-export * from './caracterService';
+export * from './characterService';
 export * from './apiService';

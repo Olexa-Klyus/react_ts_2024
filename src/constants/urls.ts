@@ -1,6 +1,6 @@
 const baseURL = 'https://rickandmortyapi.com/api';
 
-const characters = '/chracter';
+const characters = '/character';
 
 const urls = {
     characters
