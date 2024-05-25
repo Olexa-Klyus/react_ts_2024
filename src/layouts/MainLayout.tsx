@@ -9,4 +9,4 @@ const MainLayout = () => {
     );
 };
 
-export  {MainLayout};
+export {MainLayout};

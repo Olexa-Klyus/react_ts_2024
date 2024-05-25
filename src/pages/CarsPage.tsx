@@ -3,11 +3,9 @@ import React from 'react';
 const CarsPage = () => {
     return (
         <div>
-            iouhoiwerf
+            <div>hkhkjhk</div>
         </div>
     );
 };
 
-export {
-    CarsPage
-};
+export default CarsPage;
