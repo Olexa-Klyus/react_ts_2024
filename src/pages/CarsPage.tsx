@@ -1,13 +1,13 @@
 import React from 'react';
-import './App.css';
 
-
-const App = () => {
+const CarsPage = () => {
     return (
         <div>
-
+            iouhoiwerf
         </div>
     );
-}
+};
 
-export default App;
+export {
+    CarsPage
+};
