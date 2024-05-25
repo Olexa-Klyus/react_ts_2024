@@ -1,7 +1,7 @@
 import {apiService} from "./apiService";
 import {urls} from "../constants";
 
-const CarService = {
+const carService = {
     getAll: () => apiService.get(urls.cars.base),
     create: (data: any) => apiService.post(urls.cars.base, data),
     updateById: (id: number, data: any) => apiService.put(urls.cars.byId(id), data),
@@ -9,5 +9,5 @@ const CarService = {
 };
 
 export {
-    CarService
+    carService
 };
