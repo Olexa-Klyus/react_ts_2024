@@ -11,8 +11,8 @@ const charactersSlice = createSlice({
     initialState,
     reducers: {
         setResponce: (state, action) => {
-            const {info: {prev, next}, result} = action.payload;
-            state.characters = result;
+            const {info: {prev, next}, results} = action.payload;
+            state.characters = results;
             state.nextPage = next;
             state.prevPage = prev;
         }
