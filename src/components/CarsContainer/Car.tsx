@@ -6,10 +6,10 @@ import {carService} from "../../services";
 const Car = ({car}) => {
     const {id, brand, price, year} = car;
 
-    const deleteById=async ()=>{
-        await carService.deleteById(id)
-        dispatch(carActions.trigger())
-    };
+    // const deleteById = async () => {
+    //     await carService.deleteById(id)
+    //     dispatch(carActions.trigger())
+    // };
 
     const dispatch = useDispatch()
     return (
@@ -18,8 +18,9 @@ const Car = ({car}) => {
             <div>brand : {brand}</div>
             <div>price : {price}</div>
             <div>yeaar : {year}</div>
-            <button onClick={()=>dispatch(carActions.setCarForUpdate(car))}>update</button>
-            <button onClick={()=>deleteById()}>delete</button>
+            <button onClick={() => dispatch(carActions.setCarForUpdate(car))}>update</button>
+            {/*<button onClick={()=>deleteById()}>delete</button>*/}
+            <button onClick={() => dispatch(carActions.deleteById({id}))}>delete</button>
 
         </div>
     );
