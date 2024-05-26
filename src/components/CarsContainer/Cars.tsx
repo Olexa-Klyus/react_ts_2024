@@ -6,13 +6,13 @@ import {carActions} from "../../store";
 
 const Cars = () => {
 
-    const {cars} = useSelector(state => state.cars);
+    const {cars, trigger} = useSelector(state => state.cars);
 
     const dispatch = useDispatch()
 
     useEffect(() => {
         carService.getAll().then(({data}) => dispatch(carActions.setAllCars(data)))
-    }, [])
+    }, [trigger, dispatch])
 
     return (
         <div>
