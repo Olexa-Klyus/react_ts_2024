@@ -54,6 +54,16 @@ const updateById = createAsyncThunk(
     }
 )
 
+const deleteById = createAsyncThunk(
+    'carService/deleteById',
+    async ({id}, thunkAPI) => {
+        try {
+            await carService.deleteById(id);
+        } catch (e) {
+            return thunkAPI.rejectWithValue(e.response.data)
+        }
+    }
+)
 //----------------------------------------------------------------------------------------------
 const carsSlice = createSlice({
     name: 'carsSlice',
@@ -62,9 +72,9 @@ const carsSlice = createSlice({
         // setAllCars: (state, action) => {
         //     state.cars = action.payload
         // },
-        trigger: state => {
-            state.trigger = !state.trigger
-        },
+        // trigger: state => {
+        //     state.trigger = !state.trigger
+        // },
         setCarForUpdate: (state, action) => {
             state.carForUpdate = action.payload
         }
@@ -76,11 +86,12 @@ const carsSlice = createSlice({
             state.cars = action.payload
         })
 
-        .addCase(create.fulfilled, state => {
-            state.trigger = !state.trigger
-        })
-        .addCase(updateById.fulfilled,state => {
-
+        // .addCase(create.fulfilled, state => {
+        //     state.trigger = !state.trigger
+        // })
+        .addCase(updateById.fulfilled, state => {
+            // state.trigger = !state.trigger
+            state.carForUpdate = null
         })
 
         // .addCase(getAll.pending, state => {
@@ -94,6 +105,10 @@ const carsSlice = createSlice({
         //----------------------------------------------------------------------------------------------
         // є ще варіант запису станів через .addMatcher і спец функції isPending,isFulfilled,
         // -  там можна перерахувати слайси, якщо операції в них однакові
+
+        .addMatcher(isFulfilled(updateById, create, deleteById), state => {
+            state.trigger = !state.trigger
+        })
 
         .addMatcher(isFulfilled(getAll), state => {
             state.loading = false
@@ -117,7 +132,8 @@ const carActions = {
     ...actions,
     getAll,
     create,
-    updateById
+    updateById,
+    deleteById
 };
 
 export {

@@ -21,15 +21,17 @@ const CarForm = () => {
     }, [carForUpdate, setValue])
 
     const save = async (car) => {
-        await carService.create(car)
-        dispatch(carActions.trigger())
+        // await carService.create(car)
+        // dispatch(carActions.trigger())
+        dispatch(carActions.create({car}))
         reset()
     }
 
     const update=async (car)=>{
-        await carService.updateById(carForUpdate.id,car)
-        dispatch(carActions.trigger())
-        dispatch(carActions.setCarForUpdate(null))
+        // await carService.updateById(carForUpdate.id,car)
+        // dispatch(carActions.trigger())
+        // dispatch(carActions.setCarForUpdate(null))
+        dispatch(carActions.updateById({id:carForUpdate.id,carData:car}))
         reset()
     }
 
