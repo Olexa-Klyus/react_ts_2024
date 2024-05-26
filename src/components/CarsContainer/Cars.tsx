@@ -11,7 +11,9 @@ const Cars = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        carService.getAll().then(({data}) => dispatch(carActions.setAllCars(data)))
+        // тeпeр не запускаємо запит безпосередньо тут, а даємо команду на запуск в carsSlice за допомогою AsyncThunk
+        // carService.getAll().then(({data}) => dispatch(carActions.setAllCars(data)))
+        dispatch(carActions.getAll())
     }, [trigger, dispatch])
 
     return (
