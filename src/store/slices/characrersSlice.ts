@@ -2,7 +2,7 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {characterService} from "../../services";
 
 const initialState = {
-    characrers: []
+    characters: []
 }
 
 const getAll = createAsyncThunk(
@@ -24,11 +24,11 @@ const characrersSlice = createSlice({
     extraReducers: builder =>
         builder
             .addCase(getAll.fulfilled, (state, action) => {
-                state.characrers = action.payload
+                state.characters = action.payload
             })
 })
 
-const {reduser: characrersReduser, actions} = characrersSlice;
+const {reducer: characrersReducer, actions} = characrersSlice;
 
 const characrersActions = {
     ...actions,
@@ -36,6 +36,6 @@ const characrersActions = {
 };
 
 export {
-    characrersReduser,
+    characrersReducer,
     characrersActions
 }
