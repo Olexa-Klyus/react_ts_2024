@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import episode from "./Episode";
 import Episode from "./Episode";
 import {episodesActions} from "../../store";
 import {useSearchParams} from "react-router-dom";
@@ -11,6 +10,7 @@ const Episodes = () => {
 
     const [query, setQuery] = useSearchParams({page: '1'})
     const page = query.get('page');
+    console.log(page);
 
     const dispatch = useDispatch();
 

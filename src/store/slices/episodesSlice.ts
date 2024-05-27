@@ -7,8 +7,7 @@ const initialState = {
     episodes: []
 }
 
-const getAll = createAsyncThunk
-(
+const getAll = createAsyncThunk(
     'episodesSlice/getAll',
     async ({page}, thunkAPI) => {
         try {

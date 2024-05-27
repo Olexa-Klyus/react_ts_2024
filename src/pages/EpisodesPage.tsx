@@ -1,11 +1,11 @@
 import React from 'react';
-import Episode from "../components/EpisodesContainer/Episode";
 import EpisodePagination from "../components/EpisodesContainer/EpisodePagination";
+import Episodes from "../components/EpisodesContainer/Episodes";
 
 const EpisodesPage = () => {
     return (
         <div>
-            <Episode/>
+            <Episodes/>
             <EpisodePagination/>
         </div>
     );
