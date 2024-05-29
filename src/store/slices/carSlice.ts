@@ -42,12 +42,14 @@ const create = createAsyncThunk<void, { car: ICar }>(
         }
     }
 )
-const updateById = createAsyncThunk(
+const updateById = createAsyncThunk<ICar, { car: ICar }>(
     'carSlice/updateById',
-    async ({id,car}, {rejectWithValue}) => {
+    async ({car}, {rejectWithValue}) => {
         try {
-            console.log('car',carData)
-            const {data} = await carService.updateById(id, carData);
+            const {id} = car
+            console.log('car', car)
+            console.log('id', id)
+            const {data} = await carService.updateById(id, car);
             return data;
         } catch (e) {
             const err = e as AxiosError
@@ -56,17 +58,6 @@ const updateById = createAsyncThunk(
     }
 )
 
-// const updateById = createAsyncThunk(
-//     'carSlice/updateById',
-//     async ({id, carData}, thunkAPI) => {
-//         try {
-//             const {data} = await carService.updateById(id, carData);
-//             return data;
-//         } catch (e) {
-//             return thunkAPI.rejectWithValue(e.response.data)
-//         }
-//     }
-// )
 const carSlice = createSlice({
     name: 'carSlice',
     initialState,
@@ -83,7 +74,7 @@ const carSlice = createSlice({
             .addCase(updateById.fulfilled, state => {
                 state.carForUpdate = null
             })
-            .addMatcher(isFulfilled(create,updateById), state => {
+            .addMatcher(isFulfilled(create, updateById), state => {
                 state.trigger = !state.trigger
             })
 });
