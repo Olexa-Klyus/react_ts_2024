@@ -25,9 +25,7 @@ const CarForm = () => {
     }
 
     const update: SubmitHandler<ICar> = (car) => {
-        const {id} = car
-        console.log(car)
-        dispatch(carActions.updateById())
+        dispatch(carActions.updateById({id:carForUpdate.id,car:car}))
         reset()
     }
 
@@ -41,17 +39,4 @@ const CarForm = () => {
     );
 };
 
-
-// const save = async (car) => {
-//     await carService.create(car)
-//     dispatch(carActions.trigger())
-//     reset()
-// }
-//
-// const update=async (car)=>{
-//     await carService.updateById(carForUpdate.id,car)
-//     dispatch(carActions.trigger())
-//     dispatch(carActions.setCarForUpdate(null))
-//     reset()
-// }
 export default CarForm;
