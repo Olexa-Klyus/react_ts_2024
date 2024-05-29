@@ -1,10 +1,9 @@
 import React, {useEffect} from 'react';
 import {SubmitHandler, useForm} from "react-hook-form";
-import {ICar} from "../../interfaces";
+
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {carActions} from "../../store";
-import {carService} from "../../services";
-import car from "./Car";
+import {ICar} from "../../interfaces";
 
 
 const CarForm = () => {
@@ -24,7 +23,10 @@ const CarForm = () => {
         dispatch(carActions.create({car}))
         reset()
     }
+
     const update: SubmitHandler<ICar> = (car) => {
+        const {id} = car
+        dispatch(carActions.updateById({id, car}))
         reset()
     }
 
