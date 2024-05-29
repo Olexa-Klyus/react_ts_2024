@@ -26,6 +26,7 @@ const CarForm = () => {
 
     const update: SubmitHandler<ICar> = (car) => {
         const {id} = car
+        console.log(car)
         dispatch(carActions.updateById({id, car}))
         reset()
     }
