@@ -3,6 +3,8 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import {ICar} from "../../interfaces";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {carActions} from "../../store";
+import {carService} from "../../services";
+import car from "./Car";
 
 
 const CarForm = () => {
@@ -19,12 +21,15 @@ const CarForm = () => {
     }, [carForUpdate]);
 
     const save: SubmitHandler<ICar> = (car) => {
-        if (carForUpdate)
-            dispatch(carActions.create({car}))
+        dispatch(carActions.create({car}))
         reset()
     }
+    const update: SubmitHandler<ICar> = (car) => {
+        reset()
+    }
+
     return (
-        <form onSubmit={handleSubmit(save)}>
+        <form onSubmit={handleSubmit(carForUpdate ? update : save)}>
             <input type="text" placeholder={'brand'} {...register('brand')}/>
             <input type="text" placeholder={'price'} {...register('price')}/>
             <input type="text" placeholder={'year'} {...register('year')}/>
@@ -33,4 +38,17 @@ const CarForm = () => {
     );
 };
 
+
+// const save = async (car) => {
+//     await carService.create(car)
+//     dispatch(carActions.trigger())
+//     reset()
+// }
+//
+// const update=async (car)=>{
+//     await carService.updateById(carForUpdate.id,car)
+//     dispatch(carActions.trigger())
+//     dispatch(carActions.setCarForUpdate(null))
+//     reset()
+// }
 export default CarForm;
