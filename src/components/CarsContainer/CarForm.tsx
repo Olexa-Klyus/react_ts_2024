@@ -15,12 +15,13 @@ const CarForm = () => {
             setValue("brand", carForUpdate.brand)
             setValue("price", carForUpdate.price)
             setValue("year", carForUpdate.year)
-
         }
     }, [carForUpdate]);
 
     const save: SubmitHandler<ICar> = (car) => {
-        dispatch(carActions.create({car}))
+        if (carForUpdate)
+            dispatch(carActions.create({car}))
+        reset()
     }
     return (
         <form onSubmit={handleSubmit(save)}>
