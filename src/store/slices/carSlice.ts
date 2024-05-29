@@ -42,6 +42,17 @@ const create = createAsyncThunk<void, { car: ICar }>(
         }
     }
 )
+const updateById = createAsyncThunk(
+    'carSlice/updateById',
+    async (id) => {
+        try {
+
+        } catch (e) {
+            const err = e as AxiosError
+            return rejectWithValue(err.response.data)
+        }
+    }
+)
 const carSlice = createSlice({
     name: 'carSlice',
     initialState,
