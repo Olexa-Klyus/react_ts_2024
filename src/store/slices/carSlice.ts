@@ -42,19 +42,31 @@ const create = createAsyncThunk<void, { car: ICar }>(
         }
     }
 )
-const updateById = createAsyncThunk<void, { id: number, car: ICar }>(
+const updateById = createAsyncThunk(
     'carSlice/updateById',
-    async ({car}, {rejectWithValue}) => {
+    async ({id,car}, {rejectWithValue}) => {
         try {
-            const {id} = car
-            console.log('car',car)
-            await carService.updateById(id, car)
+            console.log('car',carData)
+            const {data} = await carService.updateById(id, carData);
+            return data;
         } catch (e) {
             const err = e as AxiosError
             return rejectWithValue(err.response.data)
         }
     }
 )
+
+// const updateById = createAsyncThunk(
+//     'carSlice/updateById',
+//     async ({id, carData}, thunkAPI) => {
+//         try {
+//             const {data} = await carService.updateById(id, carData);
+//             return data;
+//         } catch (e) {
+//             return thunkAPI.rejectWithValue(e.response.data)
+//         }
+//     }
+// )
 const carSlice = createSlice({
     name: 'carSlice',
     initialState,
