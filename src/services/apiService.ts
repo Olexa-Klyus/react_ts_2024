@@ -1,7 +1,7 @@
-import {baseUrl} from "../constants";
+import {baseURL} from "../constants";
 import axios from "axios";
 
-const apiService = axios.create({baseUrl});
+const apiService = axios.create({baseURL});
 
 export {
     apiService

@@ -1,9 +1,18 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useAppDispatch, useAppSelector} from "../../hooks";
+import Car from "./Car";
 
 const Cars = () => {
+    const {cars, trigger} = useAppSelector(state => state.cars);
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+
+    }, [trigger]);
+
     return (
         <div>
-            C
+            {cars.map(car => <Car key={car.id} car={car}/>)}
         </div>
     );
 };
