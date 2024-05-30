@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
-import {AuthDataModel} from "../models/AuthDataModel";
+import {AuthDataModel} from "../models";
 
 
 const AuthForm = () => {
