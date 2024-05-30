@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
 import {AuthDataModel} from "../models";
+import {authService} from "../services";
 
 
 const AuthForm = () => {
@@ -15,7 +16,7 @@ const AuthForm = () => {
 
     //робимо через useState, бо змінна isAuth невидима в блоці return
 
-    const auth = async (formData: AuthDataModel) => {
+    const authenticate = async (formData:AuthDataModel)=> {
         const isAuth = await authService.authentication(formData);
         setIsAuthState(isAuth);
     };
@@ -28,7 +29,7 @@ const AuthForm = () => {
                     isAuthState ? <span>ok</span> : <span>not ok</span>
                 }
             </div>
-            <form onSubmit={handleSubmit(auth)}>
+            <form onSubmit={handleSubmit(authenticate)}>
                 <input type="text"{...register('username')}/>
                 <input type="text"{...register('password')}/>
                 <button></button>
