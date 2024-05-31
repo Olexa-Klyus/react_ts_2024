@@ -12,6 +12,8 @@ const authService = {
         let response;
         try {
             response = await axiosInstance.post<ITokenObtainPair>('/auth', authData);
+            localStorage.setItem('tokenPair',JSON.stringify(response.data));
+
         } catch (e) {
             console.log(e);
         }

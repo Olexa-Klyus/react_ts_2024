@@ -32,7 +32,7 @@ const AuthForm = () => {
             <form onSubmit={handleSubmit(authenticate)}>
                 <input type="text"{...register('username')}/>
                 <input type="text"{...register('password')}/>
-                <button></button>
+                <button>auth</button>
             </form>
         </div>
     );
