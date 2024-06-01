@@ -6,7 +6,10 @@ import Car from "./Car";
 const Cars = () => {
     const [cars, setCars] = useState<ICarWithAuthModel[]>([])
     useEffect(() => {
-        carService.getCars().then(({value}) => setCars(value));
+        carService.getCars().then(({value}) => {
+            console.log(value);
+            if (value) setCars(value)
+        })
     }, []);
     return (
         <div>
