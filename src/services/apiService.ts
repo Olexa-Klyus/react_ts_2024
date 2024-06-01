@@ -3,7 +3,7 @@ import {AuthDataModel} from "../models";
 import {ITokenObtainPair} from "../models";
 
 const axiosInstance = axios.create({
-    baseURL: 'http://owu.lincpc.net/carsAPI/v2',
+    baseURL: 'http://owu.linkpc.net/carsAPI/v2',
     headers: {}
 });
 
@@ -22,6 +22,12 @@ const authService = {
     },
     refresh: () => {
     },
+}
+
+const carService={
+    getCars:{
+
+    }
 }
 
 export {
