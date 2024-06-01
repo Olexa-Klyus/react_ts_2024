@@ -1,18 +1,20 @@
 import axios from "axios";
 import {AuthDataModel} from "../models";
 import {ITokenObtainPair} from "../models";
+import {retriveLocalStorageData} from "../helpers";
 
 const axiosInstance = axios.create({
     baseURL: 'http://owu.linkpc.net/carsAPI/v2',
     headers: {}
 });
 
-// перехоплюємо request і додаємо headers
+// перехоплюємо request і додаємо headers, виносимо чавстину коду в helpers
 axiosInstance.interceptors.request.use(request => {
-    if (localStorage.getItem('tokenPair') && (request.url !== '/auth'))
-        request.headers.set('Authorization', 'Bearer '
-            // +JSON.parse(localStorage.getItem('tokenPair')
-        )
+    if (localStorage.getItem('tokenPair') && (request.url !== '/auth' && request.url !== '/auth/refresh')) {
+        const iTokenObtainPair = retriveLocalStorageData<ITokenObtainPair>('tokenPair');
+        request.headers.set('Authorization', 'Bearer ' + iTokenObtainPair.access)
+    }
+
     return request;
 })
 
@@ -36,7 +38,7 @@ const authService = {
 const carService = {
     getCars: async () => {
         try {
-            await axiosInstance.get('/cars')
+            await axiosInstance.get('/cars');
         } catch (e) {
             console.log(e)
         }
