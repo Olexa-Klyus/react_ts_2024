@@ -1,9 +1,8 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {carService} from "../services";
-import Cars from "../components/Cars";
 import {ICarPaginatedModel} from "../models";
 
-const CarsPage :FC= () => {
+const CarsPage = () => {
     const [carsPage, setCarsPage] = useState<ICarPaginatedModel>()
     useEffect(() => {
         carService.getCars().then((data) => {

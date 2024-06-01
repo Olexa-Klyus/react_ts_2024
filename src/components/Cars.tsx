@@ -1,6 +1,5 @@
 import React from 'react';
 import {ICarWithAuthModel} from "../models";
-import Car from "./Car";
 
 const Cars = (items: ICarWithAuthModel[]) => {
 
