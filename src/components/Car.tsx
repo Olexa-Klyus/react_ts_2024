@@ -12,7 +12,6 @@ const Car: FC<IProps> = ({car}) => {
             <div>brand : {brand}</div>
             <div>year : {year}</div>
             <div>price : {price}</div>
-            <div>photo : {photo}</div>
             <hr/>
         </div>
     );
