@@ -1,18 +1,27 @@
 import React, {useEffect, useState} from 'react';
 import {carService} from "../services";
 import {ICarPaginatedModel} from "../models";
+import Cars from "../components/Cars";
 
 const CarsPage = () => {
-    const [carsPage, setCarsPage] = useState<ICarPaginatedModel>()
+    const [carsPaginatedObject, setCarsPaginatedObject] = useState<ICarPaginatedModel>({
+        items: [],
+        next: null,
+        prev: null,
+        total_pages: 0,
+        total_items: 0
+    })
     useEffect(() => {
         carService.getCars().then((data) => {
             console.log(data);
-            if (data) setCarsPage(data)
+            if (data) {
+                setCarsPaginatedObject(data);
+            }
         })
     }, []);
     return (
         <div>
-            {/*items && <Cars items={carsPage?.items}/>*/}
+            <Cars cars={carsPaginatedObject?.items}/>
         </div>
     );
 };

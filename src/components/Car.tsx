@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {ICarWithAuthModel} from "../models";
 
-const Car = (car: ICarWithAuthModel) => {
+interface IProps{
+    car:ICarWithAuthModel
+}
+const Car: FC<IProps> = ({car}) => {
     const {id, brand, year, price, photo} = car;
     return (
         <div>
@@ -10,6 +13,7 @@ const Car = (car: ICarWithAuthModel) => {
             <div>year : {year}</div>
             <div>price : {price}</div>
             <div>photo : {photo}</div>
+            <hr/>
         </div>
     );
 };
