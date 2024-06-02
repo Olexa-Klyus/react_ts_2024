@@ -15,8 +15,8 @@ const CarsPage = () => {
         total_items: 0
     })
 
-// для пагінації додаємо useSearchParams і перехід на 1 сторінку за дефолтом
-    const [query, setQuery] = useSearchParams({page: '1'});
+// тут тільки зчитуємо значення сторінки, яке впроваджується в компоненті Pagination
+    const [query, setQuery] = useSearchParams();
     // console.log('page = ', query.get('page'))
 
     useEffect(() => {
@@ -27,25 +27,10 @@ const CarsPage = () => {
         })
     }, [query]);
 
-    const changePage = (action: string) => {
-        switch (action) {
-            case 'next':
-                // setQuery({'page':'2'})
-                // просто беремо номер наступної сторінки з обєкта який нам прийшов і сетимо
-                setQuery({...carsPaginatedObject.next});
-                break;
-
-            case 'prev':
-                // setQuery({'page':'1'})
-                setQuery({...carsPaginatedObject.prev});
-                break;
-        }
-    }
-
-    return (
+   return (
         <div>
             <Cars cars={carsPaginatedObject?.items}/>
-            <Pagination changePage={changePage} prev={carsPaginatedObject.prev} next={carsPaginatedObject.next}/>
+            <Pagination prev={carsPaginatedObject.prev} next={carsPaginatedObject.next}/>
         </div>
     );
 };
