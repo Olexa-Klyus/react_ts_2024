@@ -1,6 +1,10 @@
-import React from 'react';
+import React, {FC} from 'react';
 
-const MyComponent = ({children}) => {
+interface IProps{
+    children:any
+}
+
+const MyComponent:FC<IProps> = ({children}) => {
 
     return (
         <div>
