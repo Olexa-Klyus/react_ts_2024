@@ -39,10 +39,9 @@ const authService = {
 }
 
 const carService = {
-    getCars: async ({page}: string) => {
+    getCars: async (page: string) => {
         try {
             const response = await axiosInstance.get<ICarPaginatedModel>('/cars', {params: {page: page}});
-            console.log(response.data)
             return response.data
         } catch
             (e) {
@@ -51,7 +50,7 @@ const carService = {
                 //закінчився токен - пробуємо оновити access token через refresh
                 const refreshToken = retriveLocalStorageData<ITokenObtainPair>('tokenPair').refresh;
                 await authService.refresh(refreshToken);
-                await carService.getCars();
+                await carService.getCars(page);
             }
             console.log(e)
         }
