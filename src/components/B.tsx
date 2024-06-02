@@ -1,9 +1,9 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import C from "./C";
-import {Context} from "../App";
+import {useAppContext} from "../hooks/useAppContext";
 
 const B = () => {
-    const value = useContext(Context);
+    const value = useAppContext();
     return (
         <div>
             <h2>B : {value}</h2>
