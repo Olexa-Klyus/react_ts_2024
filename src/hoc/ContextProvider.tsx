@@ -1,4 +1,4 @@
-import React, {createContext, FC, ReactHTML, ReactNode} from 'react';
+import React, {createContext, FC, ReactNode} from 'react';
 
 const Context = createContext('');
 
