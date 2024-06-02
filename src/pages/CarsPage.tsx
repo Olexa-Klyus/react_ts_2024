@@ -3,7 +3,11 @@ import {carService} from "../services";
 import {ICarPaginatedModel} from "../models";
 import Cars from "../components/Cars";
 import Pagination from "../components/Pagination";
+import {useSearchParams} from "react-router-dom";
 
+
+// для пагінації додаємо useSearchParams і перехід на 1 сторінку за дефолтом
+[page,setPage] = useSearchParams({page: '1'})
 const CarsPage = () => {
     const [carsPaginatedObject, setCarsPaginatedObject] = useState<ICarPaginatedModel>({
         items: [],
@@ -13,7 +17,7 @@ const CarsPage = () => {
         total_items: 0
     })
     useEffect(() => {
-        carService.getCars().then((data) => {
+        carService.getCars(page).then((data) => {
             console.log(data);
             if (data) {
                 setCarsPaginatedObject(data);

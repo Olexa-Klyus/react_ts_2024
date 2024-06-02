@@ -39,12 +39,13 @@ const authService = {
 }
 
 const carService = {
-    getCars: async () => {
+    getCars: async ({page}: string) => {
         try {
-            const response = await axiosInstance.get<ICarPaginatedModel>('/cars');
+            const response = await axiosInstance.get<ICarPaginatedModel>('/cars', {params: {page: page}});
             console.log(response.data)
             return response.data
-        } catch (e) {
+        } catch
+            (e) {
             const axiosError = e as AxiosError;
             if (axiosError?.response?.status === 401) {
                 //закінчився токен - пробуємо оновити access token через refresh
