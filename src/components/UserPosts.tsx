@@ -1,6 +1,5 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import {useContextProvider} from "../context/ContextProvider";
-import user from "./User";
 import {UserWithPostsType} from "../models/UserWithPostsType";
 
 const UserPosts = () => {
