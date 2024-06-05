@@ -1,9 +1,10 @@
 import React from 'react';
+import UserPosts from "../components/UserPosts";
 
 const UserPostsPage = () => {
     return (
         <div>
-            UserPostsPage
+            <UserPosts/>
         </div>
     );
 };
