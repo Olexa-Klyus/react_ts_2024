@@ -1,4 +1,4 @@
-import {createContext} from "react";
+import {createContext, useContext} from "react";
 import {IUserModel} from "../models/IUserModel";
 import {IPostModel} from "../models/IPostModel";
 
@@ -7,8 +7,13 @@ type StoreType = {
     postStore: { allPosts: IPostModel[] },
 }
 
-export const defaultValue:StoreType={
-    userStore:{allUsers:[]},
-    postStore:{allPosts:[]}
+export const defaultValue: StoreType = {
+    userStore: {allUsers: []},
+    postStore: {allPosts: []}
 }
 export const Context1 = createContext<StoreType>(defaultValue);
+
+// щоб було менше імпортів створюємо власний хук
+export const useContextProvider = (): StoreType => {
+    return useContext(Context1);
+}
