@@ -6,6 +6,7 @@ type StoreType = {
     userStore: {
         allUsers: IUserModel[],
         setAllUsers: (user: IUserModel[]) => void,
+
         favoriteUser: IUserModel | null,
         setFavoriteUser: (obj: IUserModel) => void
     },
