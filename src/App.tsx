@@ -7,6 +7,7 @@ const App = () => {
 
     const dispatch = useAppDispatch();
     const counter1State = useAppSelector(state => state.counter1SliceState.value)
+
     return (
         <div>
             <h2>{counter1State}</h2>

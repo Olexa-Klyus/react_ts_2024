@@ -54,7 +54,7 @@ export const useAppSelector = useSelector.withTypes<RootState>();
 
 export default store;
 
-// так було у ВЕТАЛЯ
+// у ВЕТАЛЯ було по іншому
 // const {reducer: counter1Reducer, actions} = counter1Slice;
 //
 // const counter1Actions = {...actions};
