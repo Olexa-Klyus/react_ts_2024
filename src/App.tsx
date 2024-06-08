@@ -11,19 +11,20 @@ const App = () => {
     return (
         <div>
             <h2>{counter1State}</h2>
+
             <button onClick={() => {
                 dispatch(increment())
-            }}> inc
+            }}> increment
             </button>
 
             <button onClick={() => {
                 dispatch(decrement())
-            }}> dec
+            }}> decrement
             </button>
 
             <button onClick={() => {
                 dispatch(incrementByAmount(10))
-            }}> inc of 10
+            }}> increment of 10
             </button>
         </div>
     );
