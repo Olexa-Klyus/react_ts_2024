@@ -1,14 +1,6 @@
 import React from 'react';
 import './App.css';
-import {
-    counter2Actions,
-    counter2Reducer,
-    decrement,
-    increment,
-    incrementByAmount,
-    useAppDispatch,
-    useAppSelector
-} from "./redux/store";
+import {counter2Actions, decrement, increment, incrementByAmount, useAppDispatch, useAppSelector} from "./redux/store";
 
 
 const App = () => {
