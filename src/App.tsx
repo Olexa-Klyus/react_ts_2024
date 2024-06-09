@@ -5,7 +5,7 @@ import Recipes from "./components/recipes/Recipes";
 const App = () => {
     return (
         <div>
-            {/*<Caracters/>*/}
+
             <Recipes/>
         </div>
     );

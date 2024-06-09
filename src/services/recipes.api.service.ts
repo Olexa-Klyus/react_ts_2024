@@ -1,16 +1,16 @@
-import axios, {AxiosResponse} from "axios";
-import {IRecipeProps} from "../models/Recipe";
+import axios from "axios";
 
 
 let axiosInstance = axios.create({
-    baseURL: 'https://dummyjson.com/',
+    baseURL: 'https://petition.president.gov.ua/petition/222732',
     headers: {
         'Content-Type': 'application/json'
+
     }
 });
 
 const getAllRecipes = () => {
-    return axiosInstance.get('/recipes')
+    return axiosInstance.get('/votes/3/json')
 }
 
 
