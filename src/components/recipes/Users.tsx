@@ -26,13 +26,16 @@ const Users: FC = () => {
 
     }, [page]);
 
-
+    const inc = () => {
+        page = page + 1
+    }
     console.log(users)
     console.log(page)
 
     return (
         <div>
-            <button onClick={() => page = page + 1}>click</button>
+            <button onClick={() => inc()}>click
+            </button>
         </div>
     );
 };
