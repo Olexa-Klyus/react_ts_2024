@@ -4,8 +4,14 @@ import {getAllRecipes} from "../../services/recipes.api.service";
 
 const Users: FC = () => {
 
-    let page = 1;
-    const [users, setUsers] = useState<any>()
+    let page = 1
+
+    const [users, setUsers] = useState<any>([])
+
+    const inc = () => {
+        page = page + 1
+        console.log(page)
+    }
 
     useEffect(() => {
         getAllRecipes(page)
@@ -26,15 +32,13 @@ const Users: FC = () => {
 
     }, [page]);
 
-    const inc = () => {
-        page = page + 1
-    }
+
     console.log(users)
-    console.log(page)
+
 
     return (
         <div>
-            <button onClick={() => inc()}>click
+            <button onClick={inc}>click
             </button>
         </div>
     );
