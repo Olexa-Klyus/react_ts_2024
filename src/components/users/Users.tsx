@@ -18,7 +18,7 @@ const Users: FC = () => {
     }
 
     const record = () => {
-        const fs = require('fs');
+        const fs = require('fs')
         const writeStream = fs.createWriteStream('file.txt');
         const pathName = writeStream.path;
 
@@ -75,7 +75,7 @@ const Users: FC = () => {
             <hr/>
             <button onClick={() => {
                 record()
-            }}>click
+            }}>record
             </button>
         </div>
     );
