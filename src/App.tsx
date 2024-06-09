@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Recipes from "./components/recipes/Users";
+import Recipes from "./components/users/Users";
 
 const App = () => {
     return (
