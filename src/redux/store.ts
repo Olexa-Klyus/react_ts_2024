@@ -11,18 +11,42 @@ type CounterStateType = {
 
 const initialState: CounterStateType = {
     value: 0,
+};
+
+const initialState2: CounterStateType = {
+    value: 0,
 }
+
 
 const counter1Slice = createSlice({
     name: 'counter1SliceName',
     initialState,
     reducers: {
         increment: (state) => {
-            state.value = state.value + 1
+            state.value = state.value + 1;
         },
         decrement: (state) => {
-            state.value = state.value - 1
+            state.value = state.value - 1;
         },
+        // PayloadAction- це спеціальний тип для параметрицзації action
+        incrementByAmount: (state,
+                            action: PayloadAction<number>) => {
+            state.value = state.value + action.payload
+        },
+    }
+});
+
+const counter2Slice = createSlice({
+    name: 'counter2SliceName',
+    initialState:initialState2,
+    reducers: {
+        increment: (state) => {
+            state.value = state.value + 1;
+        },
+        decrement: (state) => {
+            state.value = state.value - 1;
+        },
+        // PayloadAction- це спеціальний тип для параметрицзації action
         incrementByAmount: (state,
                             action: PayloadAction<number>) => {
             state.value = state.value + action.payload
@@ -40,8 +64,18 @@ export const {
 const store = configureStore({
     reducer: {
         counter1SliceState: counter1Slice.reducer,
+        counter2SliceState: counter2Slice.reducer,
     }
 });
+
+// --------------------------------------------------------------------------------------------------
+// у ВЕТАЛЯ було по іншому
+const {reducer: counter2Reducer, actions} = counter2Slice;
+
+const counter2Actions = {...actions};
+
+export {counter2Actions, counter2Reducer}
+// --------------------------------------------------------------------------------------------------
 
 // потрібно параметризувати два хуки, які будуть часто використовуватися в компонентах, щоб потім не робити це кожен раз
 // для цього створюємо два параметризовані кастомні хуки, які будемо використовувати замість них
@@ -54,9 +88,3 @@ export const useAppSelector = useSelector.withTypes<RootState>();
 
 export default store;
 
-// у ВЕТАЛЯ було по іншому
-// const {reducer: counter1Reducer, actions} = counter1Slice;
-//
-// const counter1Actions = {...actions};
-//
-// export {counter1Actions, counter1Reducer}
