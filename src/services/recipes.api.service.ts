@@ -9,8 +9,8 @@ let axiosInstance = axios.create({
     }
 });
 
-const getAllRecipes = () => {
-    return axiosInstance.get('/votes/3/json')
+const getAllRecipes = (page: number) => {
+    return axiosInstance.get('/votes/' + page + '/json')
 }
 
 

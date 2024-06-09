@@ -2,13 +2,13 @@ import React, {FC, useEffect, useState} from 'react';
 import {getAllRecipes} from "../../services/recipes.api.service";
 
 
-const Recipes: FC = () => {
+const Users: FC = () => {
 
-
-    const [recipes, setRecipes] = useState<any>([])
+    let page = 1;
+    const [users, setUsers] = useState<any>()
 
     useEffect(() => {
-        getAllRecipes()
+        getAllRecipes(page)
             .then(value => JSON.stringify(value.data))
             .then(value => value.slice(0, value.indexOf('","pag_html"')))
             .then(value => value.slice(value.indexOf('<div class=\\"table_cell number\\">')))
@@ -19,31 +19,22 @@ const Recipes: FC = () => {
             .then(value => value.replaceAll(/<div class=\\"table_cell date\\">/g, '","date":"'))
             .then(value => value.replaceAll(/<div>|<\/div>|\\n/g, ""))
             .then(value => value.replaceAll(/<div class=\\"table_row\\">/g, '"},{'))
-            .then(value => '[{'+ value + '"}]')
+            .then(value => '[{' + value + '"}]')
             .then(value => JSON.parse(value))
 
-            .then(value => setRecipes(value))
+            .then(value => setUsers(value))
 
-    }, []);
+    }, [page]);
 
-    console.log(recipes)
+
+    console.log(users)
+    console.log(page)
+
     return (
         <div>
-
-            {/*{*/}
-            {/*{recipes}*/}
-
-            {/*        .map((value: IRecipeProps) => (*/}
-            {/*            <Recipe key={value.id}*/}
-            {/*                    id={value.id}*/}
-            {/*                    name={value.name}*/}
-            {/*                    cuisine={value.cuisine}*/}
-            {/*                    mealType={value.mealType}*/}
-            {/*                    instructions={value.instructions}*/}
-            {/*                    image={value.image}/>))*/}
-            {/*}*/}
+            <button onClick={() => page = page + 1}>click</button>
         </div>
     );
 };
 
-export default Recipes;
+export default Users;
