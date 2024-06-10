@@ -38,7 +38,7 @@ const Users: FC = () => {
         // const [stateForTimer, setStateForTimer] = useState(30000);
         //
         // useEffect(() => {
-        //     // повторити з інтервалом 2 секунди
+        //     // повторити з інтервалом 3 секунди
         //     let timerId = setInterval(() =>
         //         incrementPage(), 3000)
         // }, [incrementPage]);
