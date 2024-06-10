@@ -10,6 +10,12 @@ const userInitState: UserSliceType = {
     users: []
 }
 
+type PostSliceType = {
+    users: IUser[]
+}
+const postInitState: UserSliceType = {
+    users: []
+}
 
 const loadUsers = createAsyncThunk(
     'userSlice/loadUsers',
@@ -41,4 +47,4 @@ const userSlice = createSlice({
             })
 })
 
-export const userActions ={}
+const {actions} = userSlice
