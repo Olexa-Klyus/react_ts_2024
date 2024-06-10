@@ -25,15 +25,20 @@ const loadUsers = createAsyncThunk(
     }
 );
 
-createSlice({
+const userSlice = createSlice({
     name: 'userSlice',
     initialState: userInitState,
     reducers: {},
 
     // всі асинхронні функції описуємо в extraReducers
     extraReducers: (builder) =>
-        builder.addCase(loadUsers.fulfilled, (state, action) => {
-            state.users = action.payload;
-        })
+        builder
+            .addCase(loadUsers.fulfilled, (state, action) => {
+                state.users = action.payload;
+            })
+            .addCase(loadUsers.rejected, (state, action) => {
+
+            })
 })
 
+export const userActions ={}
