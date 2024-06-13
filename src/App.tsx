@@ -1,27 +1,18 @@
-import React, {useEffect} from 'react';
-import {postActions, useAppDispatch, useAppSelector, userActions} from "./redux/store";
+import React from 'react';
+import {useAppDispatch, useAppSelector} from "./redux/store";
+import {actions} from "./redux/counterSlice";
 
 const App = () => {
-    const dispatch = useAppDispatch();
-    const {userSlice: {users}, postSlice: {posts}} = useAppSelector(state => state);
 
-    useEffect(() => {
-        dispatch(userActions.loadUsers());
-        dispatch(postActions.loadPosts());
-    }, []);
+    const {count1value} = useAppSelector(state => state.slice1);
+    const dispatch = useAppDispatch();
 
     return (
         <div>
-            {users.map(user =>
-                <div key={user.id}>
-                    {user.name} :
-                    {user.email}
-                </div>)}
-            <hr/>
-            {posts.map(post =>
-                <div key={post.id}>
-                    {post.title} :
-                </div>)}
+            <h2>{count1value}</h2>
+            <button onClick={() => dispatch(actions.increment())}>increment</button>
+            <button onClick={() => dispatch(actions.decrement())}>decrement</button>
+            <button onClick={() => dispatch(actions.reset(10))}>reset</button>
         </div>
     );
 };
