@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
-import { useAppDispatch, useAppSelector} from "./redux/store";
+import {useAppDispatch, useAppSelector} from "./redux/store";
 import {postActions, userActions} from "./redux/slices";
 
 const App = () => {
     const dispatch = useAppDispatch();
-    const {userSlice: {users}, postSlice: {posts}} = useAppSelector(state => state);
+    const {userSlice: {users, isLoaded}, postSlice: {posts},} = useAppSelector(state => state);
 
     useEffect(() => {
         dispatch(userActions.loadUsers());
@@ -13,11 +13,13 @@ const App = () => {
 
     return (
         <div>
-            {users.map(user =>
-                <div key={user.id}>
-                    {user.name} :
-                    {user.email}
-                </div>)}
+            {isLoaded ? users.map(user =>
+                    <div key={user.id}>
+                        {user.name} :
+                        {user.email}
+                    </div>)
+                : <h2>Loading...</h2>}
+
             <hr/>
             {posts.map(post =>
                 <div key={post.id}>

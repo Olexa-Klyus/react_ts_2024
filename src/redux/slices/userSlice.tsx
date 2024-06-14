@@ -1,13 +1,15 @@
 import {IUser} from "../../models";
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, isFulfilled, PayloadAction} from "@reduxjs/toolkit";
 import {userService} from "../../services";
 import {AxiosError} from "axios";
 
 type UserSliceType = {
     users: IUser[];
+    isLoaded: boolean;
 }
 const userInitState: UserSliceType = {
-    users: []
+    users: [],
+    isLoaded: false
 }
 
 const loadUsers = createAsyncThunk(
@@ -15,8 +17,10 @@ const loadUsers = createAsyncThunk(
     async (_, thunkAPI) => {
         try {
             const users = await userService.getAll();
-            console.log(users)
+            //щоб доступитися до нашої синхронної операції звідси звертаємося через  thunkAPI.dispatch
+            thunkAPI.dispatch(userActions.changeLoadState(true));
             return thunkAPI.fulfillWithValue(users);
+
         } catch (e) {
             const error = e as AxiosError;
             return thunkAPI.rejectWithValue(error.response?.data);
@@ -28,7 +32,11 @@ const loadUsers = createAsyncThunk(
 const userSlice = createSlice({
     name: 'userSlice',
     initialState: userInitState,
-    reducers: {},
+    reducers: {
+        changeLoadState: (status, action: PayloadAction<boolean>) => {
+            status.isLoaded = action.payload
+        }
+    },
 
     // всі асинхронні функції описуємо в extraReducers
     extraReducers: (builder) =>
@@ -39,7 +47,11 @@ const userSlice = createSlice({
             .addCase(loadUsers.rejected, (state, action) => {
                 //...
             })
+            .addMatcher(isFulfilled(loadUsers), (state, action) => {
+                state.isLoaded = true;
+            })
 })
+
 
 const userActions = {
     ...userSlice.actions,
