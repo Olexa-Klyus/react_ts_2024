@@ -15,6 +15,10 @@ const userService = {
     getById: async (id: string): Promise<IUser> => {
         const response = await axiosInstance.get<IUser>(urls.users.byId(+id));
         return response.data;
+    },
+    getPostsByUserId: async (id: string): Promise<IUser[]> => {
+        const response = await axiosInstance.get<IUser[]>(urls.users.postsByUserId(+id));
+        return response.data;
     }
 }
 
