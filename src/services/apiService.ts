@@ -15,16 +15,16 @@ const userService = {
     getById: async (id: string): Promise<IUser> => {
         const response = await axiosInstance.get<IUser>(urls.users.byId(+id));
         return response.data;
-    },
-    getPostsByUserId: async (id: string): Promise<IUser[]> => {
-        const response = await axiosInstance.get<IUser[]>(urls.users.postsByUserId(+id));
-        return response.data;
     }
 }
 
 const postService = {
     getAll: async (): Promise<IPost[]> => {
         const response = await axiosInstance.get<IPost[]>(urls.posts.base);
+        return response.data;
+    },
+    getPostsByUserId: async (id: string): Promise<IPost[]> => {
+        const response = await axiosInstance.get<IPost[]>(urls.users.postsByUserId(+id));
         return response.data;
     }
 }

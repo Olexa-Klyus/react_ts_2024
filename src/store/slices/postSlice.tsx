@@ -4,11 +4,13 @@ import {postService} from "../../services/apiService";
 import {AxiosError} from "axios";
 
 type PostSliceType = {
-    posts: IPost[]
+    posts: IPost[];
+    postsUser: IPost[] | null;
 }
 
 const initialState: PostSliceType = {
-    posts: []
+    posts: [],
+    postsUser: []
 }
 
 const getAll = createAsyncThunk(
@@ -24,6 +26,21 @@ const getAll = createAsyncThunk(
     }
 )
 
+const getByUserId = createAsyncThunk(
+    'postSlice/getByUserId',
+    async (id: string | undefined, thunkAPI) => {
+        if (id) {
+            try {
+                const posts = await postService.getPostsByUserId(id);
+                return thunkAPI.fulfillWithValue(posts);
+            } catch (e) {
+                const error = e as AxiosError;
+                return thunkAPI.rejectWithValue(error.response?.data)
+            }
+        }
+        return null
+    })
+
 const postSlice = createSlice({
         name: 'postSlice',
         initialState,
@@ -33,17 +50,21 @@ const postSlice = createSlice({
                 .addCase(getAll.fulfilled, (state, action) => {
                     state.posts = action.payload
                 })
+                .addCase(getByUserId.fulfilled, (state, action) => {
+                    state.postsUser = action.payload
+                })
 
     }
 )
 
-const {reducer: postsReducer, actions} = postSlice;
+const {actions} = postSlice;
 
-const postsActions={
+const postsActions = {
     ...actions,
-    getAll
+    getAll,
+    getByUserId
 }
 export {
-    postsReducer,
+    postSlice,
     postsActions
 }
