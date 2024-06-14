@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from "./redux/store";
 import {postActions, userActions} from "./redux/slices";
+import {Outlet} from "react-router-dom";
 
 const App = () => {
     const dispatch = useAppDispatch();
@@ -13,6 +14,7 @@ const App = () => {
 
     return (
         <div>
+            <Outlet/>
             {isLoaded ? users.map(user =>
                     <div key={user.id}>
                         {user.name} :
