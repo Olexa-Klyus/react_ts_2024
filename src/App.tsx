@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
-import {postActions, useAppDispatch, useAppSelector, userActions} from "./redux/store";
+import { useAppDispatch, useAppSelector} from "./redux/store";
+import {postActions, userActions} from "./redux/slices";
 
 const App = () => {
     const dispatch = useAppDispatch();
