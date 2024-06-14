@@ -2,10 +2,10 @@ import React, {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from "./redux/store";
 import {postActions, userActions} from "./redux/slices";
 import {Outlet} from "react-router-dom";
+import Header from "./components/Header";
 
 const App = () => {
     const dispatch = useAppDispatch();
-    const {userSlice: {users, isLoaded}, postSlice: {posts},} = useAppSelector(state => state);
 
     useEffect(() => {
         dispatch(userActions.loadUsers());
@@ -14,19 +14,9 @@ const App = () => {
 
     return (
         <div>
-            <Outlet/>
-            {isLoaded ? users.map(user =>
-                    <div key={user.id}>
-                        {user.name} :
-                        {user.email}
-                    </div>)
-                : <h2>Loading...</h2>}
-
+            <Header/>
             <hr/>
-            {posts.map(post =>
-                <div key={post.id}>
-                    {post.title} :
-                </div>)}
+            <Outlet/>
         </div>
     );
 };
