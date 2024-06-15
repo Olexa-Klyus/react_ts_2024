@@ -32,7 +32,7 @@ const loadUsers = createAsyncThunk(
 );
 const loadUserById = createAsyncThunk(
     'userSlice/loadUserById',
-    async (id: string | null, thunkAPI) => {
+    async (id: string | undefined, thunkAPI) => {
         try {
             const users = await userService.getById(id);
             return thunkAPI.fulfillWithValue(users);
