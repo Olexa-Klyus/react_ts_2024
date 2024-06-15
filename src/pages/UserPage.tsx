@@ -7,7 +7,7 @@ const UserPage = () => {
     const {id} = useParams();
     const dispatch = useAppDispatch();
 
-    const user = useAppSelector(state => state.userSlice.user)
+    const {user} = useAppSelector(state => state.userSlice)
     console.log(user)
 
     useEffect(() => {
