@@ -9,7 +9,6 @@ const authService = {
         return apiService.post(urls.auth.register, user)
     }
 }
-
 export {
     authService
 }
