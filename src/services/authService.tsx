@@ -1,5 +1,5 @@
 import {IAuth} from "../interfaces";
-import {IRes} from "../types/resType";
+import {IRes} from "../types";
 import {IUser} from "../interfaces/userInterface";
 import {apiService} from "./apiService";
 import {urls} from "../constants";
