@@ -18,5 +18,5 @@ const urls = {
 
 export {
     baseURL,
-    users
+    urls
 }
