@@ -2,7 +2,6 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import {IAuth} from "../interfaces";
 import {useAppDispatch, useAppSelector} from "../hooks";
 import {authActions} from "../redux/slices";
-import {isFulfilled} from "@reduxjs/toolkit";
 import {useNavigate} from "react-router-dom";
 
 const LoginPage = () => {
