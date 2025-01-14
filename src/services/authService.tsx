@@ -3,8 +3,8 @@ import {IRes} from "../types";
 import {apiService} from "./apiService";
 import {urls} from "../constants";
 
-const _accessTokenFey = 'access';
-const _refreshTokenFey = 'refresh';
+const _accessTokenKey = 'access';
+const _refreshTokenKey = 'refresh';
 
 const authService = {
     register(user: IAuth): IRes<IUser> {
@@ -22,22 +22,22 @@ const authService = {
     },
 
     setTokens({refresh, access}: ITokens): void {
-        localStorage.setItem(_accessTokenFey, access);
-        localStorage.setItem(_refreshTokenFey, refresh);
+        localStorage.setItem(_accessTokenKey, access);
+        localStorage.setItem(_refreshTokenKey, refresh);
     },
 
     getAccessToken(): string {
-        return localStorage.getItem(_accessTokenFey);
+        return localStorage.getItem(_accessTokenKey);
 
     },
 
     getRefreshToken(): string {
-        return localStorage.getItem(_refreshTokenFey);
+        return localStorage.getItem(_refreshTokenKey);
     },
 
     deleteTokens():void{
-        localStorage.removeItem(_accessTokenFey)
-        localStorage.removeItem(_refreshTokenFey)
+        localStorage.removeItem(_accessTokenKey)
+        localStorage.removeItem(_refreshTokenKey)
     }
 
 }
